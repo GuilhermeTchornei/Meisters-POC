@@ -33,4 +33,9 @@ public class TasksService {
         repository.save(task);
     }
 
+    public void deleteOne(long id) {
+        Tasks task = repository.findById(id).orElseThrow(() -> new NotFoundException("Task not found with id: " + id));
+        repository.delete(task);
+    }
+
 }

@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Tasks {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     long id;
 
     @Column(nullable = false)
