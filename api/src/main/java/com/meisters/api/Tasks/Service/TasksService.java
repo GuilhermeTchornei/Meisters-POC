@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.meisters.api.Tasks.DTO.TasksDto;
 import com.meisters.api.Tasks.Model.Tasks;
 import com.meisters.api.Tasks.Respository.TasksRepository;
 
@@ -17,6 +18,11 @@ public class TasksService {
     
     public List<Tasks> getAll(){
         return repository.findAll();
+    }
+
+    public void saveOne(TasksDto tasksDto){
+        Tasks task = new Tasks(tasksDto);
+        repository.save(task);
     }
 
 }
