@@ -14,7 +14,7 @@ function taskCard(task){
             </div>
             <div>
                 <p class="${!status && "line-through"}">${task.description || "<i>No description</i>"}</p>
-                <button class="trash">
+                <button class="trash" onclick="deleteTask(${task.id})">
                     <ion-icon name="trash-outline"></ion-icon>
                 </button>
             </div>

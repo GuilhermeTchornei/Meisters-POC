@@ -13,7 +13,6 @@ async function getTasks() {
             json.map((task, index) => {
                 tasks.set(task.id, task);
                 tasksCards += taskCard(task);
-                if (index < json.length - 1) tasksCards += `<div class="divider"></div>`
             });
             return tasksCards;
         })
@@ -44,4 +43,18 @@ function patchStatus(taskId) {
         .catch(err => {
             console.error(err);
         });
+}
+
+function deleteTask(taskId){
+    fetch(`http://localhost:8080/tasks/${taskId}`,{method:"DELETE"})
+    .then(res => {
+        if(res.status !== 202) throw new Error(res.status);
+
+        tasks.delete(taskId);
+        const taskElement = document.getElementById(taskId);
+        taskElement.remove();
+    })
+    .catch(err => {
+        console.error(err);
+    });
 }
