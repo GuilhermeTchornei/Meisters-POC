@@ -46,9 +46,9 @@ public class TasksController {
     }
 
     @PostMapping
-    @ResponseStatus(value = HttpStatus.CREATED, reason = "Task created successfully")
-    void createOne(@RequestBody @Valid TasksDto tasksDto) {
-        service.saveOne(tasksDto);
+    @ResponseStatus(value = HttpStatus.CREATED)
+    Tasks createOne(@RequestBody @Valid TasksDto tasksDto) {
+        return service.saveOne(tasksDto);
     }
 
     @PatchMapping("{taskId}")

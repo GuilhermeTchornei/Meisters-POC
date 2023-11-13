@@ -22,9 +22,9 @@ public class TasksService {
         return repository.findAllByOrderByIdAsc();
     }
 
-    public void saveOne(TasksDto tasksDto){
+    public Tasks saveOne(TasksDto tasksDto){
         Tasks task = new Tasks(tasksDto);
-        repository.save(task);
+        return repository.save(task);
     }
 
     public void setStatus(long id, StatusEnum status){
