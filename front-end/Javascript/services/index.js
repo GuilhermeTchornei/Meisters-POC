@@ -12,7 +12,9 @@ async function getTasks() {
             let tasksCards = "";
             json.map((task) => {
                 tasks.set(task.id, task);
-                tasksCards += taskCard(task);
+                if(task.size === 1)
+                    tasksCards = taskCard(task);
+                else tasksCards = taskCard(task);
             });
             return tasksCards;
         })
@@ -53,6 +55,14 @@ function deleteTask(taskId){
         tasks.delete(taskId);
         const taskElement = document.getElementById(taskId);
         taskElement.remove();
+
+        if(tasks.size === 0) {
+            document.querySelector(".content").innerHTML = `
+            <p>
+                There are no tasks yet.
+            </p>
+            `;
+        }
     })
     .catch(err => {
         console.error(err);
@@ -78,7 +88,9 @@ function createTask(event){
         res.json().then(data=>{
             tasks.set(data.id, data);
             const mainContent = document.querySelector(".content");
-            mainContent.innerHTML += taskCard(data);
+            if(tasks.size === 1)
+                mainContent.innerHTML = taskCard(data);
+            else mainContent.innerHTML += taskCard(data);
         })
     })
     .catch(err=>console.error(err));
