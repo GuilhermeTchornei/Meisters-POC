@@ -4,7 +4,7 @@ function taskCard(task){
         <div id=${task.id}  class="task-card">
             <div>
                 <h1 class="${!status && "line-through"}">${task.title}</h1>
-                <button onclick="setStatus(${task.id})">
+                <button onclick="patchStatus(${task.id})">
                     ${
                         status ? 
                         `<ion-icon name="radio-button-off-outline"></ion-icon>` : 
@@ -20,15 +20,4 @@ function taskCard(task){
             </div>
         </div>
     `
-}
-
-function setStatus(taskId){
-    const task = tasks.get(taskId);
-    if(task.status === "PENDING") task.status = "COMPLETED";
-    else task.status = "PENDING";
-
-    tasks.set(taskId, task);
-
-    const taskElement = document.getElementById(task.id);
-    taskElement.outerHTML = taskCard(task);
 }
