@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 40px;
+    background-color: #1B1B1F;
+
+    row-gap: 20px;
+    font-family: 'Roboto';
+}
+
+body p {
+    font-weight: 300;
+}
+
+a {
+    margin-left: 5px;
+}
+
+a:hover {
+    color: #0888c4;
+}
+
+main {
+    width: 500px;
+    min-height: 100px;
+    height: auto;
+
+    padding: 20px;
+    row-gap: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+}
+
+.add-task {
+    width: 80%;
+    min-height: 40px;
+
+    background-color: #0888c4;
+    border: none;
+    border-radius: 0px;
+
+    font-size: 16px;
+
+    text-align: center;
+
+    transition: all .2s;
+}
+
+.add-task:hover {
+    cursor: pointer;
+    background-color: #065e86;
+    color: #d8d8d8;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+    overflow-y: auto;
+}
+
+.divider {
+    width: 80%;
+    height: 1px;
+
+    background-color: rgba(255, 255, 255, .2);
+}
+
+.task-card{
+    width: 100%;
+    min-height: min-content;
+    max-height: 120px;
+
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding: 5px;
+
+    transition: all .3s ease-out;
+}
+
+.task-card:hover {
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.task-card div {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 12px;
+}
+
+.task-card button {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+}
+
+.task-card .trash ion-icon:hover {
+    color: red;
+}
+
+ion-icon {
+    font-size: 20px;
+
+    transition: all .3s;
+}
+
+.task-card h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.task-card p {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.line-through {
+    text-decoration: line-through;
+    color: rgb(167, 167, 167);
+}
