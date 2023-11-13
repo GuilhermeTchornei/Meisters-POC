@@ -21,3 +21,18 @@ function taskCard(task){
         </div>
     `
 }
+
+function newTaskForm(){
+    return `
+        <form>
+            <input id="title" type="text" placeholder="Title..." maxlength="50" onchange="" required />
+            <textarea id="description" placeholder="Description..." maxlength="255"></textarea>
+            <button class="submit" type="submit">Submit</button>
+            <button class="cancel" onclick="closeForm()">Cancel</button>
+        </form>
+        `;
+}
+
+function closeForm(){
+    document.querySelector("form").outerHTML = "";
+}

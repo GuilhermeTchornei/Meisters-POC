@@ -10,7 +10,7 @@ async function getTasks() {
         .then(json => {
             if (json.length <= 0) throw new Error("No Tasks!");
             let tasksCards = "";
-            json.map((task, index) => {
+            json.map((task) => {
                 tasks.set(task.id, task);
                 tasksCards += taskCard(task);
             });
@@ -57,4 +57,31 @@ function deleteTask(taskId){
     .catch(err => {
         console.error(err);
     });
+}
+
+function createTask(event){
+    event.preventDefault();
+    const task = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        status: "PENDING"
+    };
+
+    fetch("http://localhost:8080/tasks",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(task)
+        }).then(res=>{
+        if(res.status!==201)throw new Error(res.status);
+        res.json().then(data=>{
+            tasks.set(data.id, data);
+            const mainContent = document.querySelector(".content");
+            mainContent.innerHTML += taskCard(data);
+        })
+    })
+    .catch(err=>console.error(err));
+
+    document.querySelector("form").outerHTML = "";
 }
