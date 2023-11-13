@@ -30,8 +30,8 @@ import jakarta.validation.constraints.Positive;
 public class TasksController {
     private final TasksService service;
 
-    TasksController(TasksService TasksService) {
-        this.service = TasksService;
+    TasksController(TasksService tasksService) {
+        this.service = tasksService;
     }
 
     @GetMapping
