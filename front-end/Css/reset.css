@@ -53,6 +53,15 @@ button {
     cursor: pointer;
 }
 
+input, textarea {
+	border: none;
+	background: transparent;
+	padding: 10px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
 
 i {
     font-style: italic;

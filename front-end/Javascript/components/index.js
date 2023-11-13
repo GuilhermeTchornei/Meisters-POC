@@ -4,7 +4,7 @@ function taskCard(task){
         <div id=${task.id}  class="task-card">
             <div>
                 <h1 class="${!status && "line-through"}">${task.title}</h1>
-                <button onclick="setStatus(${task.id})">
+                <button onclick="patchStatus(${task.id})">
                     ${
                         status ? 
                         `<ion-icon name="radio-button-off-outline"></ion-icon>` : 
@@ -14,7 +14,7 @@ function taskCard(task){
             </div>
             <div>
                 <p class="${!status && "line-through"}">${task.description || "<i>No description</i>"}</p>
-                <button class="trash">
+                <button class="trash" onclick="deleteTask(${task.id})">
                     <ion-icon name="trash-outline"></ion-icon>
                 </button>
             </div>
@@ -22,13 +22,17 @@ function taskCard(task){
     `
 }
 
-function setStatus(taskId){
-    const task = tasks.get(taskId);
-    if(task.status === "PENDING") task.status = "COMPLETED";
-    else task.status = "PENDING";
+function newTaskForm(){
+    return `
+        <form>
+            <input id="title" type="text" placeholder="Title..." maxlength="50" onchange="" required />
+            <textarea id="description" placeholder="Description..." maxlength="255"></textarea>
+            <button class="submit" type="submit">Submit</button>
+            <button class="cancel" onclick="closeForm()">Cancel</button>
+        </form>
+        `;
+}
 
-    tasks.set(taskId, task);
-
-    const taskElement = document.getElementById(task.id);
-    taskElement.outerHTML = taskCard(task);
+function closeForm(){
+    document.querySelector("form").outerHTML = "";
 }

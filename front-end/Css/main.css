@@ -34,7 +34,7 @@ main {
     min-height: 100px;
     height: auto;
 
-    padding: 20px;
+    padding: 15px;
     row-gap: 10px;
 
     display: flex;
@@ -73,13 +73,7 @@ main {
     align-items: center;
     row-gap: 8px;
     overflow-y: auto;
-}
-
-.divider {
-    width: 80%;
-    height: 1px;
-
-    background-color: rgba(255, 255, 255, .2);
+    padding: 5px;
 }
 
 .task-card{
@@ -123,12 +117,12 @@ ion-icon {
     transition: all .3s;
 }
 
-.task-card h1 {
+.task-card h1, input {
     font-size: 20px;
     font-weight: 500;
 }
 
-.task-card p {
+.task-card p, textarea {
     font-size: 14px;
     font-weight: 300;
 }
@@ -136,4 +130,52 @@ ion-icon {
 .line-through {
     text-decoration: line-through;
     color: rgb(167, 167, 167);
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    padding: 8px;
+    align-items: center;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+form button {
+    width: 50%;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 3px;
+
+    transition: all .3s;
+}
+
+.submit{
+    background-color: white;
+    cursor: pointer;
+    margin-top: auto;
+    color: #1B1B1F;
+}
+
+.submit:hover{
+    background-color: lightgray;
+}
+
+.cancel {
+    color: white;
+    cursor: pointer;
+    margin-top: auto;
+}
+
+.cancel:hover{
+    background-color: #28282b;
 }

@@ -1,12 +1,16 @@
-const mainContainer = document.querySelector(".content");
+const mainContent = document.querySelector(".content");
 
 onInit();
 
-async function onInit(){
-    mainContainer.innerHTML = await getTasks();
+async function onInit() {
+    mainContent.innerHTML = await getTasks();
 }
 
 
-function addTask(){
-    console.log("teste");
+async function addTask() {
+    if (document.querySelector("form")) return;
+
+    mainContent.innerHTML += newTaskForm();
+    document.querySelector("form").addEventListener("submit", (event) => createTask(event));
+    mainContent.scrollTop = mainContent.scrollHeight;
 }
